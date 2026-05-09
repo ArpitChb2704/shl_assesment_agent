@@ -7,7 +7,7 @@ from app.services.guardrails import (
     is_offtopic,
     needs_clarification
 )
-from app.services.ranking import retrieve_assessments
+from app.services.search import search_assessments
 
 app = FastAPI()
 
@@ -61,7 +61,7 @@ def chat(req: ChatRequest):
 
     query = latest_user_message
 
-    recommendations = retrieve_assessments(query)
+    recommendations = search_assessments(query)
 
     return {
         "reply": f"Here are {len(recommendations)} SHL assessments matching your requirements.",
