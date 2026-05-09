@@ -14,9 +14,7 @@ from app.services.guardrails import (
     needs_clarification
 )
 
-from app.services.hybrid_search import (
-    hybrid_search
-)
+from app.services.search import search_assessments
 
 from app.services.comparison import (
     compare_assessments
@@ -123,9 +121,9 @@ def chat(req: ChatRequest):
     if refinement["cognitive"]:
         query += " cognitive"
 
-    recommendations = hybrid_search(
-        query,
-        k=5
+    recommendations = search_assessments(
+    query,
+    k=5
     )
 
     return {
