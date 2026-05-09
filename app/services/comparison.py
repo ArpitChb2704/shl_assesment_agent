@@ -1,9 +1,9 @@
-from app.services.hybrid_search import hybrid_search
+from app.services.search import search_assessments
 
 
 def compare_assessments(query):
 
-    docs = hybrid_search(
+    docs = search_assessments(
         query,
         k=2
     )
